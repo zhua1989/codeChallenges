@@ -179,13 +179,14 @@ var getRevenue = function getRevenue(rooms, input){
       // if the converted input date time is before converted start date revenue will be 0
       if(convertedDateInput < convertedStartDate){
         roomRevenue += 0;
+        console.log('this room is not being reserved at ' + input);
       } else if (isNaN(rooms[i].endDate[0]) && convertedDateInput < convertedStartDate){
         revenue += 0;
-
+        console.log('this room is not being reserved at ' + input);
       // if input date is after end reservation date
       } else if (convertedDateInput > convertedEndDate){
         roomRevenue += 0;
-
+        console.log('this room is not being reserved at ' + input);
       // all other conditions
       } else {
 
@@ -198,6 +199,8 @@ var getRevenue = function getRevenue(rooms, input){
             var proRatedAmt = percentageInMonth * rooms[i].monthlyPrice;
             roomRevenue += proRatedAmt
           }
+
+          console.log('This room is being reserved given the input date' + input);
       }
     }
     console.log('Expected revenue: $' + roomRevenue);
@@ -224,12 +227,14 @@ for(var i=1; i < rooms.length; i++){
   // input during a time when room is reserved
   if(convertedDateInput > convertedStartDate && convertedDateInput < convertedEndDate){
     unreservedRoomCapacity += 0
-
+    console.log('Room is being reservedhere');
   // input is after start date for a room that is reserved indefinitely
   } else if (isNaN(rooms[i].endDate[0]) && convertedDateInput > convertedStartDate) {
     unreservedRoomCapacity += 0;
+    console.log('Room is being reservedhere');
   } else {
     unreservedRoomCapacity += rooms[i].capacity;
+    console.log('Unreserved room here so add the capacity')
   }
 }
   console.log('Expected total capacity of the unreserved offices: ' + unreservedRoomCapacity)
