@@ -34,3 +34,7 @@ Notes:
 
 1. My script was written in Node.  
 2. Used a heredoc function to read in the CSV file
+
+#Next Steps
+
+1. Refactor code in Object Oriented Way using JS 
